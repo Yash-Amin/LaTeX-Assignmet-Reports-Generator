@@ -1,0 +1,18 @@
+#  Frontend
+
+Frontend/node_modules
+Frontend/coverage
+Frontend/.pnp
+Frontend/npm-debug.log*
+Frontend/build
+Frontend/yarn-error.log*
+Frontend/yarn-debug.log*
+.pnp.js
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+Backend/node_modules
+*.sqlite

@@ -1,0 +1,65 @@
+import React from 'react';
+import MenuItem from '@material-ui/core/MenuItem';
+import TextField from '@material-ui/core/TextField';
+import { Paper, Button } from '@material-ui/core';
+import Select from '@material-ui/core/Select';
+import { Delete, DragIndicator } from '@material-ui/icons';
+
+function Theory(props) {
+    const [state, setState] = React.useState({
+        text: props.text,
+        type: props.type
+    });
+    // text: '',
+    // type: 'paragraph'
+    const handleInputChange = event => {
+        const newState = { ...state };
+        newState[event.target.name] = event.target.value;
+        setState(newState);
+        // setState({ ...state, [event.target.name]: event.target.value });
+    };
+
+    return (
+        <Paper style={{ marginBottom: '24px' }}>
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    padding: '8px'
+                }}
+            >
+                <DragIndicator
+                    style={{ marginLeft: '8px', marginRight: '8px' }}
+                />
+                <Select
+                    name="type"
+                    value={state.type}
+                    onChange={handleInputChange}
+                >
+                    <MenuItem value={'paragraph'}>Paragraph</MenuItem>
+                    <MenuItem value={'java'}>JAVA</MenuItem>
+                    <MenuItem value={'xml'}>XML</MenuItem>
+                </Select>
+                <div style={{ flex: 1 }} />
+                <Button>
+                    <Delete color="error" />
+                </Button>
+            </div>
+            <TextField
+                name="text"
+                label="Enter paragraph"
+                multiline
+                style={{ margin: 0 }}
+                rowsMax="5"
+                fullWidth
+                value={state.text}
+                onChange={handleInputChange}
+                // className={classes.textField}
+                margin="normal"
+                variant="filled"
+            />
+        </Paper>
+    );
+}
+
+export default Theory;
